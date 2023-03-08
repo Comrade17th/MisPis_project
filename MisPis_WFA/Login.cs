@@ -46,7 +46,7 @@ namespace MisPis_WFA
             }
             else
             {
-                if (IsUserExsists(login, password))
+                if (IsUserExsists(login, password, out this.role))
                 {
                     MessageBox.Show("Вы успешно вошли");
                     this.login = login;
@@ -59,10 +59,10 @@ namespace MisPis_WFA
             }
         }
 
-        private bool IsUserExsists(string login, string password)
+        private bool IsUserExsists(string login, string password, out string role)
         {
             bool result = false;
-
+            role = "";
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
             string querryString = $"select * from Users where UserLogin = '{login}' and UserPassword = '{password}'";
@@ -70,7 +70,11 @@ namespace MisPis_WFA
             adapter.SelectCommand = command;
             adapter.Fill(table);
             if (table.Rows.Count == 1)
+            {
+                role = table.Rows[0][5].ToString();
                 result = true;
+            }
+                
             return result;
         }
 

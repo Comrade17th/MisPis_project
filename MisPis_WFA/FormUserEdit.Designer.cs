@@ -62,6 +62,7 @@
             this.buttonAdd.TabIndex = 1;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonChange
             // 
@@ -71,6 +72,7 @@
             this.buttonChange.TabIndex = 2;
             this.buttonChange.Text = "Изменить";
             this.buttonChange.UseVisualStyleBackColor = true;
+            this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
             // 
             // buttonRemove
             // 
@@ -80,6 +82,7 @@
             this.buttonRemove.TabIndex = 3;
             this.buttonRemove.Text = "Удалить";
             this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
             // textBoxLogin
             // 
@@ -189,6 +192,7 @@
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.dataGridView2);
             this.Name = "FormUserEdit";
+            this.Load += new System.EventHandler(this.FormUserEdit_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
