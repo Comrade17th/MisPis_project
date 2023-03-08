@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChartLoader.cs" />
     <Compile Include="database.cs" />
     <Compile Include="FormMainMenu.cs">
       <SubType>Form</SubType>

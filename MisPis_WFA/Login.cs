@@ -22,8 +22,17 @@ namespace MisPis_WFA
             StartPosition = FormStartPosition.CenterScreen;
         }
 
+        private void ChartTest()
+        {
+            string login = "admin";
+            int unit = 1;
+            int type = 1;
+            ChartLoader chartLoader = new ChartLoader(unit, type, login, chart1);
+        }
+
         private void DevSetAdm()
         {
+            
             textBox_login.Text = "admin";
             textBox_password.Text = "admin";
         }
@@ -33,6 +42,7 @@ namespace MisPis_WFA
             textBox_password.PasswordChar = '*';
             textBox_login.MaxLength = 50;
             textBox_password.MaxLength = 50;
+            ChartTest();
             DevSetAdm(); // on realese have to delete
         }
 
