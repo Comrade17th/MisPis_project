@@ -23,7 +23,7 @@ namespace MisPis_WFA
         int type;
         string login;
 
-        double POL, CEL, UME;
+        double POL = 0, CEL = 0, UME = 0;
         
 
         public ChartLoader()
@@ -31,7 +31,16 @@ namespace MisPis_WFA
 
         }
 
-        public ChartLoader(int unit, int type, string login, Chart chart)
+        public ChartLoader(int unit, string login, Chart chart)
+        {
+            this.unit = unit;
+            //this.type = type;
+            this.login = login;
+            this.chart = chart;
+            LoadALLData();
+        }
+
+        public ChartLoader(int unit,int type, string login, Chart chart)
         {
             this.unit = unit;
             this.type = type;
@@ -40,7 +49,49 @@ namespace MisPis_WFA
             LoadData();
         }
 
+        public ChartLoader(List<ChartLoader> list, Chart chartInput)
+        {
+            this.chart = chartInput;
+            foreach(var chart in list)
+            {
+                this.POL += chart.POL;
+                this.CEL += chart.CEL;
+                this.UME += chart.UME;
+            }
+            this.POL /= 3;
+            this.CEL /= 3;
+            this.UME /= 3;
+            Round();
+            SetPreference();
+            UpdatePoints();
+        }
+
+        private void Round()
+        {
+            POL = Math.Round(POL, 2);
+            CEL = Math.Round(CEL, 2);
+            UME = Math.Round(UME, 2);
+        }
+
         private void LoadData()
+        {
+            switch (type)
+            {
+                case 1:
+                    this.POL = GetReportResult(1);
+                    break;
+                case 2:
+                    this.CEL = GetReportResult(2);
+                    break;
+                case 3:
+                    this.UME = GetReportResult(3);
+                    break;
+            }
+            SetPreference();
+            UpdatePoints();
+        }
+
+        private void LoadALLData()
         {
             this.POL = GetReportResult(1);
             this.CEL = GetReportResult(2);
@@ -61,16 +112,23 @@ namespace MisPis_WFA
             chart.Series["CEL"].Color = color_CEL;
             chart.Series["UME"].Color = color_UME;
 
+            chart.Series["POL"].IsValueShownAsLabel = true;
+            chart.Series["CEL"].IsValueShownAsLabel = true;
+            chart.Series["UME"].IsValueShownAsLabel = true;
+
             //chart.Series["POL"].SetCustomProperty("PixelPointWidth", "10");
             //chart.Series["CEL"].SetCustomProperty("PixelPointWidth", "10");
             //chart.Series["UME"].SetCustomProperty("PixelPointWidth", "10");
 
-            chart.ChartAreas[0].Position.Auto = false;
-            chart.ChartAreas[0].Position.Height = 100F;
-            chart.ChartAreas[0].Position.Width = 100F;
-            chart.ChartAreas[0].Position.X = 0F;
-            chart.ChartAreas[0].Position.Y = 0F;
-
+            int tmp = 0;
+            if (tmp == 0)
+            {
+                chart.ChartAreas[0].Position.Auto = false;
+                chart.ChartAreas[0].Position.Height = 100F;
+                chart.ChartAreas[0].Position.Width = 100F;
+                chart.ChartAreas[0].Position.X = 0F;
+                chart.ChartAreas[0].Position.Y = 0F;
+            }
 
             chart.ChartAreas[0].AxisY.Maximum = 1;
 
