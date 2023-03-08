@@ -22,11 +22,18 @@ namespace MisPis_WFA
             StartPosition = FormStartPosition.CenterScreen;
         }
 
+        private void DevSetAdm()
+        {
+            textBox_login.Text = "admin";
+            textBox_password.Text = "admin";
+        }
+
         private void Login_Load(object sender, EventArgs e)
         {
             textBox_password.PasswordChar = '*';
             textBox_login.MaxLength = 50;
             textBox_password.MaxLength = 50;
+            DevSetAdm(); // on realese have to delete
         }
 
         private void Open_Temp_Menu()

@@ -41,7 +41,7 @@
             this.labelForname = new System.Windows.Forms.Label();
             this.textBoxForname = new System.Windows.Forms.TextBox();
             this.labelRole = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBoxRole = new System.Windows.Forms.TextBox();
             this.labelEditor = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -53,6 +53,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(893, 263);
             this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
             // buttonAdd
             // 
@@ -86,7 +87,7 @@
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Location = new System.Drawing.Point(150, 166);
+            this.textBoxLogin.Location = new System.Drawing.Point(353, 166);
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(100, 20);
             this.textBoxLogin.TabIndex = 4;
@@ -94,7 +95,7 @@
             // labelLogin
             // 
             this.labelLogin.AutoSize = true;
-            this.labelLogin.Location = new System.Drawing.Point(147, 150);
+            this.labelLogin.Location = new System.Drawing.Point(350, 150);
             this.labelLogin.Name = "labelLogin";
             this.labelLogin.Size = new System.Drawing.Size(38, 13);
             this.labelLogin.TabIndex = 5;
@@ -103,7 +104,7 @@
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
-            this.labelPassword.Location = new System.Drawing.Point(263, 150);
+            this.labelPassword.Location = new System.Drawing.Point(456, 150);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(45, 13);
             this.labelPassword.TabIndex = 7;
@@ -111,7 +112,7 @@
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(266, 166);
+            this.textBoxPassword.Location = new System.Drawing.Point(459, 166);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(100, 20);
             this.textBoxPassword.TabIndex = 6;
@@ -119,7 +120,7 @@
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(382, 150);
+            this.labelName.Location = new System.Drawing.Point(138, 150);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(29, 13);
             this.labelName.TabIndex = 9;
@@ -127,7 +128,7 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(385, 166);
+            this.textBoxName.Location = new System.Drawing.Point(141, 166);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(100, 20);
             this.textBoxName.TabIndex = 8;
@@ -135,7 +136,7 @@
             // labelForname
             // 
             this.labelForname.AutoSize = true;
-            this.labelForname.Location = new System.Drawing.Point(498, 150);
+            this.labelForname.Location = new System.Drawing.Point(244, 150);
             this.labelForname.Name = "labelForname";
             this.labelForname.Size = new System.Drawing.Size(56, 13);
             this.labelForname.TabIndex = 11;
@@ -143,7 +144,7 @@
             // 
             // textBoxForname
             // 
-            this.textBoxForname.Location = new System.Drawing.Point(501, 166);
+            this.textBoxForname.Location = new System.Drawing.Point(247, 166);
             this.textBoxForname.Name = "textBoxForname";
             this.textBoxForname.Size = new System.Drawing.Size(100, 20);
             this.textBoxForname.TabIndex = 10;
@@ -151,18 +152,18 @@
             // labelRole
             // 
             this.labelRole.AutoSize = true;
-            this.labelRole.Location = new System.Drawing.Point(620, 150);
+            this.labelRole.Location = new System.Drawing.Point(562, 150);
             this.labelRole.Name = "labelRole";
             this.labelRole.Size = new System.Drawing.Size(32, 13);
             this.labelRole.TabIndex = 13;
             this.labelRole.Text = "Роль";
             // 
-            // textBox4
+            // textBoxRole
             // 
-            this.textBox4.Location = new System.Drawing.Point(623, 166);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 12;
+            this.textBoxRole.Location = new System.Drawing.Point(565, 166);
+            this.textBoxRole.Name = "textBoxRole";
+            this.textBoxRole.Size = new System.Drawing.Size(100, 20);
+            this.textBoxRole.TabIndex = 12;
             // 
             // labelEditor
             // 
@@ -178,7 +179,7 @@
             this.ClientSize = new System.Drawing.Size(917, 467);
             this.Controls.Add(this.labelEditor);
             this.Controls.Add(this.labelRole);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBoxRole);
             this.Controls.Add(this.labelForname);
             this.Controls.Add(this.textBoxForname);
             this.Controls.Add(this.labelName);
@@ -216,7 +217,7 @@
         private System.Windows.Forms.Label labelForname;
         private System.Windows.Forms.TextBox textBoxForname;
         private System.Windows.Forms.Label labelRole;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBoxRole;
         private System.Windows.Forms.Label labelEditor;
     }
 }
