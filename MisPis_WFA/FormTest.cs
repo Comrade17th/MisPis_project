@@ -79,7 +79,7 @@ namespace MisPis_WFA
         private void EndTest()
         {
             CalculateResult();
-
+            MakeReport();
             MessageBox.Show($"{GetMarkString()}");
         }
 
@@ -115,9 +115,36 @@ namespace MisPis_WFA
             testResult = Math.Round(testResult, 2);
         }
 
+        private void MakeReport()
+        {
+            DB.openConnection();
+            
+            string queryAdd = GetQueryStringReport();
+            SqlCommand command = new SqlCommand(queryAdd, DB.GetConnection());
+            command.ExecuteNonQuery();
+                
+            DB.closeConnection();
+        }
+
         private string GetQueryStringReport()
         {
-            string result = $"INSERT INTO Report (UserLogin, Result, UnitId, QId) VALUES('{login}', {testResult}, {unit}, {type}); ";
+            string result = $"INSERT INTO Report (UserLogin, Result, UnitId, QId) VALUES('{login}', {DoubleToStringDot(testResult)}, {unit}, {type});";
+            return result;
+        }
+
+        private string DoubleToStringDot(double num)
+        {
+            string result = "";
+            if(num != 0 || num != 1)
+            {
+                foreach(var c in num.ToString())
+                {
+                    if (c == ',')
+                        result += '.';
+                    else
+                        result += c;
+                }
+            }
             return result;
         }
 
