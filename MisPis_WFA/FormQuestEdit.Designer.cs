@@ -47,6 +47,7 @@
             this.buttonChangeUnitName = new System.Windows.Forms.Button();
             this.textBoxQuestionType = new System.Windows.Forms.TextBox();
             this.labelUnitId = new System.Windows.Forms.Label();
+            this.labelTypeId = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQuestions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnits)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQuestionTypes)).BeginInit();
@@ -112,6 +113,7 @@
             this.dataGridViewQuestionTypes.Name = "dataGridViewQuestionTypes";
             this.dataGridViewQuestionTypes.Size = new System.Drawing.Size(115, 136);
             this.dataGridViewQuestionTypes.TabIndex = 6;
+            this.dataGridViewQuestionTypes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewQuestionTypes_CellClick);
             // 
             // labelType
             // 
@@ -210,14 +212,25 @@
             this.labelUnitId.AutoSize = true;
             this.labelUnitId.Location = new System.Drawing.Point(12, 180);
             this.labelUnitId.Name = "labelUnitId";
-            this.labelUnitId.Size = new System.Drawing.Size(0, 13);
+            this.labelUnitId.Size = new System.Drawing.Size(29, 13);
             this.labelUnitId.TabIndex = 18;
+            this.labelUnitId.Text = "label";
+            // 
+            // labelTypeId
+            // 
+            this.labelTypeId.AutoSize = true;
+            this.labelTypeId.Location = new System.Drawing.Point(143, 180);
+            this.labelTypeId.Name = "labelTypeId";
+            this.labelTypeId.Size = new System.Drawing.Size(35, 13);
+            this.labelTypeId.TabIndex = 19;
+            this.labelTypeId.Text = "label1";
             // 
             // FormQuestEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelTypeId);
             this.Controls.Add(this.labelUnitId);
             this.Controls.Add(this.textBoxQuestionType);
             this.Controls.Add(this.buttonChangeUnitName);
@@ -269,5 +282,6 @@
         private System.Windows.Forms.Button buttonChangeUnitName;
         private System.Windows.Forms.TextBox textBoxQuestionType;
         private System.Windows.Forms.Label labelUnitId;
+        private System.Windows.Forms.Label labelTypeId;
     }
 }
