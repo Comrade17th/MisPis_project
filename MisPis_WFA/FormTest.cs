@@ -22,7 +22,7 @@ namespace MisPis_WFA
         List<TextBox> listTextBox = new List<TextBox>();
         int time = 1000*60; // 1 minute
         const int TIME_MODIFIER = 3;
-        float testResult = 0;
+        double testResult = 0;
 
         public FormTest()
         {
@@ -102,17 +102,17 @@ namespace MisPis_WFA
 
         private void CalculateResult()
         {
-            float total = 0;
+            double total = 0;
             for(int i = 0; i < listQuest.Count; i++)
             {
                 total += listQuest[i].difficulty;
                 if (listQuest[i].ans == listTextBox[i].Text)
                     testResult += listQuest[i].difficulty;
             }
-            MessageBox.Show($"{testResult}");
             total /= listQuest.Count;
             testResult /= listQuest.Count;
             testResult /= total;
+            testResult = Math.Round(testResult, 2);
         }
 
         private string GetQueryStringReport()
