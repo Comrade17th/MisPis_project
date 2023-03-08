@@ -39,5 +39,27 @@ namespace MisPis_WFA
         {
             OpenMap();
         }
+
+        private void OpenFormUnit(int unit)
+        {
+            FormUnit unitForm = new FormUnit(login,unit);
+            unitForm.Show();
+            this.Close();
+        }
+
+        private void buttonUnit1_Click(object sender, EventArgs e)
+        {
+            OpenFormUnit(1);
+        }
+
+        private void buttonUnit2_Click(object sender, EventArgs e)
+        {
+            OpenFormUnit(2);
+        }
+
+        private void buttonUnit3_Click(object sender, EventArgs e)
+        {
+            OpenFormUnit(3);
+        }
     }
 }

@@ -53,6 +53,7 @@
             this.buttonUnit1.TabIndex = 1;
             this.buttonUnit1.Text = "Раздел 1 (ВычМат)";
             this.buttonUnit1.UseVisualStyleBackColor = true;
+            this.buttonUnit1.Click += new System.EventHandler(this.buttonUnit1_Click);
             // 
             // buttonUnit2
             // 
@@ -62,6 +63,7 @@
             this.buttonUnit2.TabIndex = 2;
             this.buttonUnit2.Text = "Раздел 2 (SciLab)";
             this.buttonUnit2.UseVisualStyleBackColor = true;
+            this.buttonUnit2.Click += new System.EventHandler(this.buttonUnit2_Click);
             // 
             // buttonUnit3
             // 
@@ -71,6 +73,7 @@
             this.buttonUnit3.TabIndex = 3;
             this.buttonUnit3.Text = "Раздел 3 (История)";
             this.buttonUnit3.UseVisualStyleBackColor = true;
+            this.buttonUnit3.Click += new System.EventHandler(this.buttonUnit3_Click);
             // 
             // buttonMap
             // 

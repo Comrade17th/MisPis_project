@@ -66,6 +66,18 @@
     <Compile Include="FormTempMenu.Designer.cs">
       <DependentUpon>FormTempMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTest.Designer.cs">
+      <DependentUpon>FormTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUnit.Designer.cs">
+      <DependentUpon>FormUnit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +94,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormTempMenu.resx">
       <DependentUpon>FormTempMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTest.resx">
+      <DependentUpon>FormTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUnit.resx">
+      <DependentUpon>FormUnit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

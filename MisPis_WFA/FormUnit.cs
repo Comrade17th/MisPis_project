@@ -31,14 +31,26 @@ namespace MisPis_WFA
 
         }
 
-        private void OpenTest(int unit, int type)
+        private void OpenTest(int type)
         {
-
+            FormTest test = new FormTest(login, unit, type);
+            test.Show();
+            this.Close();
         }
 
         private void buttonTestType1_Click(object sender, EventArgs e)
         {
+            OpenTest(1);
+        }
 
+        private void buttonTestType2_Click(object sender, EventArgs e)
+        {
+            OpenTest(2);
+        }
+
+        private void buttonTestType3_Click(object sender, EventArgs e)
+        {
+            OpenTest(3);
         }
     }
 }

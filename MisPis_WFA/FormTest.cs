@@ -32,5 +32,35 @@ namespace MisPis_WFA
         {
 
         }
+
+        private void OpenMainMenu()
+        {
+            FormMainMenu formMainMenu = new FormMainMenu(login);
+            formMainMenu.Show();
+            this.Close();
+        }
+
+        private void buttonEndTest_Click(object sender, EventArgs e)
+        {
+
+            // check, are u sure to end test
+
+            // send to DB test result
+
+            // show result message
+
+            OpenMainMenu();
+        }
+
+        private void buttonStartTest_Click(object sender, EventArgs e)
+        {
+            // set this.button inactive
+
+            // load timer
+
+            // start timer
+
+            // load quest text to richBoxes
+        }
     }
 }
