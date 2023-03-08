@@ -43,6 +43,9 @@
             this.labelRole = new System.Windows.Forms.Label();
             this.textBoxRole = new System.Windows.Forms.TextBox();
             this.labelEditor = new System.Windows.Forms.Label();
+            this.buttonClearFields = new System.Windows.Forms.Button();
+            this.labelid = new System.Windows.Forms.Label();
+            this.label_need_id = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -174,9 +177,39 @@
             this.labelEditor.TabIndex = 14;
             this.labelEditor.Text = "Панель управления пользователями";
             // 
+            // buttonClearFields
+            // 
+            this.buttonClearFields.Location = new System.Drawing.Point(671, 164);
+            this.buttonClearFields.Name = "buttonClearFields";
+            this.buttonClearFields.Size = new System.Drawing.Size(109, 23);
+            this.buttonClearFields.TabIndex = 15;
+            this.buttonClearFields.Text = "Очистить поля";
+            this.buttonClearFields.UseVisualStyleBackColor = true;
+            this.buttonClearFields.Click += new System.EventHandler(this.buttonClearFields_Click);
+            // 
+            // labelid
+            // 
+            this.labelid.AutoSize = true;
+            this.labelid.Location = new System.Drawing.Point(12, 150);
+            this.labelid.Name = "labelid";
+            this.labelid.Size = new System.Drawing.Size(15, 13);
+            this.labelid.TabIndex = 16;
+            this.labelid.Text = "id";
+            // 
+            // label_need_id
+            // 
+            this.label_need_id.AutoSize = true;
+            this.label_need_id.Location = new System.Drawing.Point(12, 169);
+            this.label_need_id.Name = "label_need_id";
+            this.label_need_id.Size = new System.Drawing.Size(0, 13);
+            this.label_need_id.TabIndex = 17;
+            // 
             // FormUserEdit
             // 
             this.ClientSize = new System.Drawing.Size(917, 467);
+            this.Controls.Add(this.label_need_id);
+            this.Controls.Add(this.labelid);
+            this.Controls.Add(this.buttonClearFields);
             this.Controls.Add(this.labelEditor);
             this.Controls.Add(this.labelRole);
             this.Controls.Add(this.textBoxRole);
@@ -219,5 +252,8 @@
         private System.Windows.Forms.Label labelRole;
         private System.Windows.Forms.TextBox textBoxRole;
         private System.Windows.Forms.Label labelEditor;
+        private System.Windows.Forms.Button buttonClearFields;
+        private System.Windows.Forms.Label labelid;
+        private System.Windows.Forms.Label label_need_id;
     }
 }

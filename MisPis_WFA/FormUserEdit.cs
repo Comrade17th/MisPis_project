@@ -71,19 +71,147 @@ namespace MisPis_WFA
             DB.closeConnection();
         }
 
+        private void AddUser()
+        {
+            DB.openConnection();
+
+            string UserName = textBoxName.Text;
+            string UserForName = textBoxForname.Text;
+            string UserLogin = textBoxLogin.Text;
+            string UserPassword = textBoxPassword.Text;
+            string UserRole = textBoxRole.Text;
+            if(UserName == "" || UserForName == "" || UserLogin == "" || UserName == "" || UserRole == "")
+            {
+                MessageBox.Show("Заполните все поля!");
+            }
+            else
+            {
+                if (IsUserExsists(UserLogin))
+                {
+                    MessageBox.Show("Пользователь с таким логином уже есть, выберите другой логин!");
+                }
+                else
+                {
+                    string queryAdd = $"INSERT INTO Users (UserName, UserForName, UserLogin, UserPassword, UserRole) " +
+                    $"VALUES('{UserName}', '{UserForName}', '{UserLogin}', '{UserPassword}', '{UserRole}'); ";
+                    SqlCommand command = new SqlCommand(queryAdd, DB.GetConnection());
+                    command.ExecuteNonQuery();
+                    RefreshDataGridView(dataGridView2);
+                }
+            }
+            DB.closeConnection();
+        }
+
+        private bool IsUserExsists(string login)
+        {
+            bool result = false;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataTable table = new DataTable();
+            string querryString = $"select * from Users where UserLogin = '{login}'";
+            SqlCommand command = new SqlCommand(querryString, DB.GetConnection());
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+            if (table.Rows.Count >= 1)
+            {
+                result = true;
+            }
+
+            return result;
+        }
+
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            AddUser();
+        }
 
+        private void ChangeUser()
+        {
+            DB.openConnection();
+            string UserLogin = textBoxLogin.Text;
+            if (!IsAllFieldsAreFilled())
+            {
+                MessageBox.Show("Заполните все поля!");
+            }
+            else
+            {
+                if (IsUserExsists(UserLogin))
+                {
+                    MessageBox.Show("Пользователь с таким логином уже есть, выберите другой логин!");
+                }
+                else
+                {
+                    string queryAdd = GetChangeQueryString();
+                    SqlCommand command = new SqlCommand(queryAdd, DB.GetConnection());
+                    command.ExecuteNonQuery();
+                    RefreshDataGridView(dataGridView2);
+                }
+            }
+            DB.closeConnection();
+        }
+
+        private bool IsAllFieldsAreFilled()
+        {
+            if (textBoxName.Text == "" ||
+                textBoxForname.Text == "" ||
+                textBoxLogin.Text == "" ||
+                textBoxPassword.Text == "" ||
+                textBoxRole.Text == "")
+                return false;
+            else
+                return true;
+        }
+
+        private string GetChangeQueryString()
+        {
+            string UserId = label_need_id.Text;
+            string UserName = textBoxName.Text;
+            string UserForName = textBoxForname.Text;
+            string UserLogin = textBoxLogin.Text;
+            string UserPassword = textBoxPassword.Text;
+            string UserRole = textBoxRole.Text;
+            string result = $"UPDATE Users SET " +
+                $"UserName = '{UserName}', " +
+                $"UserForName = '{UserForName}', " +
+                $"UserLogin = '{UserLogin}', " +
+                $"UserPassword = '{UserPassword}', " +
+                $"UserRole = '{UserRole}'" +
+                $"WHERE UserId = {UserId}; ";
+            return result;
         }
 
         private void buttonChange_Click(object sender, EventArgs e)
         {
+            ChangeUser();
+        }
 
+        private void RemoveUser()
+        {
+            DB.openConnection();
+            string UserLogin = textBoxLogin.Text;
+            
+            if (IsUserExsists(UserLogin))
+            {
+                string queryAdd = GetRemoveQueryString();
+                SqlCommand command = new SqlCommand(queryAdd, DB.GetConnection());
+                command.ExecuteNonQuery();
+                RefreshDataGridView(dataGridView2);
+            }
+            else
+            {
+                MessageBox.Show("Выберите пользователя, который существует");
+            }
+            DB.closeConnection();
+        }
+
+        private string GetRemoveQueryString()
+        {
+            string result = $"DELETE FROM Users WHERE UserId = {label_need_id.Text}";
+            return result;
         }
 
         private void buttonRemove_Click(object sender, EventArgs e)
         {
-
+            RemoveUser();
         }
 
         private void DgwInfoToTextBoxes(DataGridViewCellEventArgs e)
@@ -93,6 +221,7 @@ namespace MisPis_WFA
             if(e.RowIndex >= 0)
             {
                 DataGridViewRow row = dataGridView2.Rows[selectedRow];
+                label_need_id.Text = row.Cells[0].Value.ToString();
                 textBoxName.Text = row.Cells[1].Value.ToString();
                 textBoxForname.Text = row.Cells[2].Value.ToString();
                 textBoxLogin.Text = row.Cells[3].Value.ToString();
@@ -105,6 +234,21 @@ namespace MisPis_WFA
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DgwInfoToTextBoxes(e);
+        }
+
+        private void ClearFields()
+        {
+            label_need_id.Text = "";
+            textBoxName.Text = "";
+            textBoxForname.Text = "";
+            textBoxLogin.Text = "";
+            textBoxPassword.Text = "";
+            textBoxRole.Text = "";
+        }
+
+        private void buttonClearFields_Click(object sender, EventArgs e)
+        {
+            ClearFields();
         }
     }
 }
