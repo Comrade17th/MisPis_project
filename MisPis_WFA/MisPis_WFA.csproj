@@ -60,6 +60,18 @@
     <Compile Include="FormMap.Designer.cs">
       <DependentUpon>FormMap.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMaterials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMaterials.Designer.cs">
+      <DependentUpon>FormMaterials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormQuestEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormQuestEdit.Designer.cs">
+      <DependentUpon>FormQuestEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTempMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +90,12 @@
     <Compile Include="FormUnit.Designer.cs">
       <DependentUpon>FormUnit.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUserEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUserEdit.Designer.cs">
+      <DependentUpon>FormUserEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +110,12 @@
     <EmbeddedResource Include="FormMap.resx">
       <DependentUpon>FormMap.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormMaterials.resx">
+      <DependentUpon>FormMaterials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormQuestEdit.resx">
+      <DependentUpon>FormQuestEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormTempMenu.resx">
       <DependentUpon>FormTempMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormUnit.resx">
       <DependentUpon>FormUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUserEdit.resx">
+      <DependentUpon>FormUserEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

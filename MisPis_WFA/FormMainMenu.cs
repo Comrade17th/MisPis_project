@@ -61,5 +61,16 @@ namespace MisPis_WFA
         {
             OpenFormUnit(3);
         }
+
+        private void OpenMaterials()
+        {
+            FormMaterials formMaterials = new FormMaterials();
+            formMaterials.Show();
+        }
+
+        private void buttonMaterials_Click(object sender, EventArgs e)
+        {
+            OpenMaterials();
+        }
     }
 }

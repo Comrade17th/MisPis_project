@@ -61,6 +61,7 @@
             this.buttonUserEdit.TabIndex = 2;
             this.buttonUserEdit.Text = "Редактор Пользователей";
             this.buttonUserEdit.UseVisualStyleBackColor = true;
+            this.buttonUserEdit.Click += new System.EventHandler(this.buttonUserEdit_Click);
             // 
             // buttonQuestEdit
             // 
@@ -70,6 +71,7 @@
             this.buttonQuestEdit.TabIndex = 3;
             this.buttonQuestEdit.Text = "Редактор Вопросов";
             this.buttonQuestEdit.UseVisualStyleBackColor = true;
+            this.buttonQuestEdit.Click += new System.EventHandler(this.buttonQuestEdit_Click);
             // 
             // FormTempMenu
             // 

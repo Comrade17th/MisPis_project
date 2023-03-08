@@ -93,6 +93,7 @@
             this.buttonMaterials.TabIndex = 5;
             this.buttonMaterials.Text = "Лекционные Материалы";
             this.buttonMaterials.UseVisualStyleBackColor = true;
+            this.buttonMaterials.Click += new System.EventHandler(this.buttonMaterials_Click);
             // 
             // FormMainMenu
             // 

@@ -42,5 +42,26 @@ namespace MisPis_WFA
         {
             OpenMainMenu();
         }
+
+        private void OpenUserEdit()
+        {
+            FormUserEdit formUserEdit = new FormUserEdit();
+            formUserEdit.Show();
+        }
+
+        private void buttonUserEdit_Click(object sender, EventArgs e)
+        {
+            OpenUserEdit();
+        }
+
+        private void OpenQuestEdit()
+        {
+            FormQuestEdit formQuestEdit = new FormQuestEdit();
+            formQuestEdit.Show();
+        }
+        private void buttonQuestEdit_Click(object sender, EventArgs e)
+        {
+            OpenQuestEdit();
+        }
     }
 }

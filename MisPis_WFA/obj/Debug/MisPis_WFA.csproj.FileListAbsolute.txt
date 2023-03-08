@@ -14,3 +14,6 @@ C:\Users\Comrade\Desktop\Учеба\education\MisPis_project\MisPis_WFA\obj\Debu
 C:\Users\Comrade\Desktop\Учеба\education\MisPis_project\MisPis_WFA\obj\Debug\MisPis_WFA.FormMap.resources
 C:\Users\Comrade\Desktop\Учеба\education\MisPis_project\MisPis_WFA\obj\Debug\MisPis_WFA.FormTest.resources
 C:\Users\Comrade\Desktop\Учеба\education\MisPis_project\MisPis_WFA\obj\Debug\MisPis_WFA.FormUnit.resources
+C:\Users\Comrade\Desktop\Учеба\education\MisPis_project\MisPis_WFA\obj\Debug\MisPis_WFA.FormMaterials.resources
+C:\Users\Comrade\Desktop\Учеба\education\MisPis_project\MisPis_WFA\obj\Debug\MisPis_WFA.FormQuestEdit.resources
+C:\Users\Comrade\Desktop\Учеба\education\MisPis_project\MisPis_WFA\obj\Debug\MisPis_WFA.FormUserEdit.resources
