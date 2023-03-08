@@ -16,6 +16,7 @@ namespace MisPis_WFA
         database DB = new database();
         int selectedUnit;
         int selectedType;
+        int selectedQuest;
 
         public FormQuestEdit()
         {
@@ -27,19 +28,21 @@ namespace MisPis_WFA
             ClearLabels();
             CreateUnitColumns();
             CreateTypeColumns();
+            CreateQuestColumns();
             RefreshAllDataGridView();
         }
 
         private void ClearLabels()
         {
-            labelTypeId.Text = "";
-            labelUnitId.Text = "";
+            labelTypeId.Text = "1";
+            labelUnitId.Text = "1";
         }
 
         private void RefreshAllDataGridView()
         {
             RefreshDataGridViewUnit(dataGridViewUnits);
             RefreshDataGridViewType(dataGridViewQuestionTypes);
+            RefreshDataGridViewQuest(dataGridViewQuestions);
         }
 
         private void CreateUnitColumns()
@@ -60,6 +63,17 @@ namespace MisPis_WFA
 
         }
 
+        private void CreateQuestColumns()
+        {
+            //INSERT INTO Quests (UnitId, Qid, QuestDiffculty, QuestText, QuestAns) 
+            dataGridViewQuestions.Columns.Add("QuestId", "id");
+            dataGridViewQuestions.Columns.Add("UnitId", "UnitId");
+            dataGridViewQuestions.Columns.Add("Qid", "TypeId");
+            dataGridViewQuestions.Columns.Add("QuestDiffculty", "Сложность");
+            dataGridViewQuestions.Columns.Add("QuestText", "Вопрос");
+            dataGridViewQuestions.Columns.Add("QuestAns", "Ответ");
+        }
+
         private void ReadUnitSingleRow(DataGridView dgw, IDataRecord record)
         {
             dgw.Rows.Add(
@@ -74,6 +88,33 @@ namespace MisPis_WFA
                 record.GetInt32(0),
                 record.GetString(1)
                 );
+        }
+
+        private void ReadQuestSingleRow(DataGridView dgw, IDataRecord record)
+        {
+            dgw.Rows.Add(
+                record.GetInt32(0),
+                record.GetInt32(1),
+                record.GetInt32(2),
+                record.GetInt32(3),
+                record.GetString(4),
+                record.GetString(5)
+                );
+        }
+
+        private void RefreshDataGridViewQuest(DataGridView dgw)
+        {
+            dgw.Rows.Clear();
+            string queryString = $"select * from Quests where Qid = {labelTypeId.Text} and UnitId = {labelUnitId.Text}";
+            SqlCommand command = new SqlCommand(queryString, DB.GetConnection());
+            DB.openConnection();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                ReadQuestSingleRow(dgw, reader);
+            }
+            reader.Close();
+            DB.closeConnection();
         }
 
         private void RefreshDataGridViewUnit(DataGridView dgw)
@@ -115,14 +156,13 @@ namespace MisPis_WFA
                 DataGridViewRow row = dataGridViewUnits.Rows[selectedUnit];
                 labelUnitId.Text = row.Cells[0].Value.ToString();
                 textBoxUnitName.Text = row.Cells[1].Value.ToString();
-                
-
             }
         }
 
         private void dataGridViewUnits_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DgwUnitToTextBox(e);
+            RefreshDataGridViewQuest(dataGridViewQuestions);
         }
 
         private void ChangeUnit()
@@ -176,6 +216,93 @@ namespace MisPis_WFA
         private void dataGridViewQuestionTypes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DgwTypeToTextBox(e);
+            RefreshDataGridViewQuest(dataGridViewQuestions);
+        }
+
+        private void DgwQuestToTextBox(DataGridViewCellEventArgs e)
+        {
+            // (QuestId, UnitId, Qid, QuestDiffculty, QuestText, QuestAns) 
+            selectedQuest = e.RowIndex;
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridViewQuestions.Rows[selectedQuest];
+                labelQuestId.Text = row.Cells[0].Value.ToString();
+                textBoxDifficulty.Text = row.Cells[3].Value.ToString();
+                richTextBoxQuest.Text = row.Cells[4].Value.ToString();
+                textBoxAns.Text = row.Cells[5].Value.ToString();
+            }
+        }
+
+        private void dataGridViewQuestions_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DgwQuestToTextBox(e);
+        }
+
+        private void AddQuest()
+        {
+            DB.openConnection();            
+            if (IsQuestFieldsEmpty())
+            {
+                MessageBox.Show("Заполните все поля!");
+            }
+            else
+            {
+                if (IsDifficultyNum())
+                {
+                    string queryAdd = GetAddQueryStringQuest();
+                    SqlCommand command = new SqlCommand(queryAdd, DB.GetConnection());
+                    command.ExecuteNonQuery();
+                    RefreshDataGridViewQuest(dataGridViewQuestions);
+                }
+                else
+                {
+                    MessageBox.Show("В поле сложности должно быть число!");
+                }
+            }
+            DB.closeConnection();
+        }
+
+        private bool IsDifficultyNum()
+        {
+            int num = 0;
+            return int.TryParse(textBoxDifficulty.Text, out num);
+        }
+
+        private bool IsQuestFieldsEmpty()
+        {
+            if (richTextBoxQuest.Text == "" ||
+                textBoxAns.Text == "" ||
+                textBoxDifficulty.Text == "")
+                return true;
+            else
+                return false;
+        }
+
+        private string GetAddQueryStringQuest()
+        {
+            string result = $"INSERT INTO Quests (UnitId, Qid, QuestDiffculty, QuestText, QuestAns) VALUES" +
+                $"({labelUnitId.Text}, " +
+                $"{labelTypeId.Text}, " +
+                $"{textBoxDifficulty.Text}, " +
+                $"'{richTextBoxQuest.Text}', " +
+                $"'{textBoxAns.Text}'); ";
+            return result;
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            AddQuest();
+            RefreshDataGridViewQuest(dataGridViewQuestions);
+        }
+
+        private void buttonChange_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonRemove_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
