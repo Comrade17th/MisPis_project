@@ -34,7 +34,7 @@ namespace MisPis_WFA
 
         private void LoadChart()
         {
-            chartLoader = new ChartLoader(unit, 1, login, chartUnit);
+            chartLoader = new ChartLoader(unit, login, chartUnit);
         }
 
         private void OpenTest(int type)

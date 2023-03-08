@@ -27,7 +27,7 @@ namespace MisPis_WFA
             string login = "admin";
             int unit = 1;
             int type = 1;
-            ChartLoader chartLoader = new ChartLoader(unit, type, login, chart1);
+            //ChartLoader chartLoader = new ChartLoader(unit, type, login, chart1);
         }
 
         private void DevSetAdm()
@@ -42,8 +42,8 @@ namespace MisPis_WFA
             textBox_password.PasswordChar = '*';
             textBox_login.MaxLength = 50;
             textBox_password.MaxLength = 50;
-            ChartTest();
-            DevSetAdm(); // on realese have to delete
+            //ChartTest();
+            //DevSetAdm(); // on realese have to delete
         }
 
         private void Open_Temp_Menu()
