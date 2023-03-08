@@ -31,10 +31,10 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonChange = new System.Windows.Forms.Button();
             this.buttonRemove = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewQuestions = new System.Windows.Forms.DataGridView();
+            this.dataGridViewUnits = new System.Windows.Forms.DataGridView();
             this.labelUnit = new System.Windows.Forms.Label();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewQuestionTypes = new System.Windows.Forms.DataGridView();
             this.labelType = new System.Windows.Forms.Label();
             this.labelDifficulty = new System.Windows.Forms.Label();
             this.textBoxDifficulty = new System.Windows.Forms.TextBox();
@@ -43,9 +43,13 @@
             this.richTextBoxQuest = new System.Windows.Forms.RichTextBox();
             this.labelQuest = new System.Windows.Forms.Label();
             this.labelEditor = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.textBoxUnitName = new System.Windows.Forms.TextBox();
+            this.buttonChangeUnitName = new System.Windows.Forms.Button();
+            this.textBoxQuestionType = new System.Windows.Forms.TextBox();
+            this.labelUnitId = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQuestions)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnits)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQuestionTypes)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonAdd
@@ -75,21 +79,22 @@
             this.buttonRemove.Text = "Удалить";
             this.buttonRemove.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dataGridViewQuestions
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 265);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(776, 173);
-            this.dataGridView1.TabIndex = 3;
+            this.dataGridViewQuestions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewQuestions.Location = new System.Drawing.Point(12, 265);
+            this.dataGridViewQuestions.Name = "dataGridViewQuestions";
+            this.dataGridViewQuestions.Size = new System.Drawing.Size(776, 173);
+            this.dataGridViewQuestions.TabIndex = 3;
             // 
-            // dataGridView2
+            // dataGridViewUnits
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(12, 57);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(106, 136);
-            this.dataGridView2.TabIndex = 4;
+            this.dataGridViewUnits.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUnits.Location = new System.Drawing.Point(12, 57);
+            this.dataGridViewUnits.Name = "dataGridViewUnits";
+            this.dataGridViewUnits.Size = new System.Drawing.Size(106, 136);
+            this.dataGridViewUnits.TabIndex = 4;
+            this.dataGridViewUnits.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUnits_CellClick);
             // 
             // labelUnit
             // 
@@ -100,13 +105,13 @@
             this.labelUnit.TabIndex = 5;
             this.labelUnit.Text = "Разделы";
             // 
-            // dataGridView3
+            // dataGridViewQuestionTypes
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(143, 57);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(115, 136);
-            this.dataGridView3.TabIndex = 6;
+            this.dataGridViewQuestionTypes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewQuestionTypes.Location = new System.Drawing.Point(143, 57);
+            this.dataGridViewQuestionTypes.Name = "dataGridViewQuestionTypes";
+            this.dataGridViewQuestionTypes.Size = new System.Drawing.Size(115, 136);
+            this.dataGridViewQuestionTypes.TabIndex = 6;
             // 
             // labelType
             // 
@@ -175,11 +180,48 @@
             this.labelEditor.TabIndex = 14;
             this.labelEditor.Text = "Конструктор вопросов";
             // 
+            // textBoxUnitName
+            // 
+            this.textBoxUnitName.Location = new System.Drawing.Point(12, 199);
+            this.textBoxUnitName.Name = "textBoxUnitName";
+            this.textBoxUnitName.Size = new System.Drawing.Size(106, 20);
+            this.textBoxUnitName.TabIndex = 15;
+            // 
+            // buttonChangeUnitName
+            // 
+            this.buttonChangeUnitName.Location = new System.Drawing.Point(12, 223);
+            this.buttonChangeUnitName.Name = "buttonChangeUnitName";
+            this.buttonChangeUnitName.Size = new System.Drawing.Size(106, 36);
+            this.buttonChangeUnitName.TabIndex = 16;
+            this.buttonChangeUnitName.Text = "Изменить название";
+            this.buttonChangeUnitName.UseVisualStyleBackColor = true;
+            this.buttonChangeUnitName.Click += new System.EventHandler(this.buttonChangeUnitName_Click);
+            // 
+            // textBoxQuestionType
+            // 
+            this.textBoxQuestionType.Location = new System.Drawing.Point(143, 199);
+            this.textBoxQuestionType.Name = "textBoxQuestionType";
+            this.textBoxQuestionType.ReadOnly = true;
+            this.textBoxQuestionType.Size = new System.Drawing.Size(115, 20);
+            this.textBoxQuestionType.TabIndex = 17;
+            // 
+            // labelUnitId
+            // 
+            this.labelUnitId.AutoSize = true;
+            this.labelUnitId.Location = new System.Drawing.Point(12, 180);
+            this.labelUnitId.Name = "labelUnitId";
+            this.labelUnitId.Size = new System.Drawing.Size(0, 13);
+            this.labelUnitId.TabIndex = 18;
+            // 
             // FormQuestEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelUnitId);
+            this.Controls.Add(this.textBoxQuestionType);
+            this.Controls.Add(this.buttonChangeUnitName);
+            this.Controls.Add(this.textBoxUnitName);
             this.Controls.Add(this.labelEditor);
             this.Controls.Add(this.labelQuest);
             this.Controls.Add(this.richTextBoxQuest);
@@ -188,18 +230,19 @@
             this.Controls.Add(this.textBoxDifficulty);
             this.Controls.Add(this.labelDifficulty);
             this.Controls.Add(this.labelType);
-            this.Controls.Add(this.dataGridView3);
+            this.Controls.Add(this.dataGridViewQuestionTypes);
             this.Controls.Add(this.labelUnit);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewUnits);
+            this.Controls.Add(this.dataGridViewQuestions);
             this.Controls.Add(this.buttonRemove);
             this.Controls.Add(this.buttonChange);
             this.Controls.Add(this.buttonAdd);
             this.Name = "FormQuestEdit";
             this.Text = "FormQuestEdit";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.Load += new System.EventHandler(this.FormQuestEdit_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQuestions)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnits)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQuestionTypes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,10 +253,10 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonChange;
         private System.Windows.Forms.Button buttonRemove;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridViewQuestions;
+        private System.Windows.Forms.DataGridView dataGridViewUnits;
         private System.Windows.Forms.Label labelUnit;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dataGridViewQuestionTypes;
         private System.Windows.Forms.Label labelType;
         private System.Windows.Forms.Label labelDifficulty;
         private System.Windows.Forms.TextBox textBoxDifficulty;
@@ -222,5 +265,9 @@
         private System.Windows.Forms.RichTextBox richTextBoxQuest;
         private System.Windows.Forms.Label labelQuest;
         private System.Windows.Forms.Label labelEditor;
+        private System.Windows.Forms.TextBox textBoxUnitName;
+        private System.Windows.Forms.Button buttonChangeUnitName;
+        private System.Windows.Forms.TextBox textBoxQuestionType;
+        private System.Windows.Forms.Label labelUnitId;
     }
 }
