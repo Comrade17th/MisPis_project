@@ -67,6 +67,12 @@
     <Compile Include="FormMaterials.Designer.cs">
       <DependentUpon>FormMaterials.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPhotoViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPhotoViewer.Designer.cs">
+      <DependentUpon>FormPhotoViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormQuestEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMaterials.resx">
       <DependentUpon>FormMaterials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPhotoViewer.resx">
+      <DependentUpon>FormPhotoViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormQuestEdit.resx">
       <DependentUpon>FormQuestEdit.cs</DependentUpon>
