@@ -294,15 +294,75 @@ namespace MisPis_WFA
             AddQuest();
             RefreshDataGridViewQuest(dataGridViewQuestions);
         }
+        private void ChangeQuest()
+        {
+            DB.openConnection();
+            if (IsQuestFieldsEmpty())
+            {
+                MessageBox.Show("Заполните все поля!");
+            }
+            else
+            {
+                if (IsDifficultyNum())
+                {
+                    string queryChange = GetChangeQueryStringQuest();
+                    SqlCommand command = new SqlCommand(queryChange, DB.GetConnection());
+                    command.ExecuteNonQuery();
+                    RefreshDataGridViewQuest(dataGridViewQuestions);
+                }
+                else
+                {
+                    MessageBox.Show("В поле сложности должно быть число!");
+                }
+            }
+            DB.closeConnection();
+        }
+
+        private string GetChangeQueryStringQuest()
+        {
+            string result = $"update Quests set " +
+                $"UnitId = {labelUnitId.Text}, " +
+                $"Qid = {labelTypeId.Text}, " +
+                $"QuestDiffculty = {textBoxDifficulty.Text}, " +
+                $"QuestText = '{richTextBoxQuest.Text}', " +
+                $"QuestAns = {textBoxAns.Text} where QuestId = {labelQuestId.Text}";
+            return result;
+        }
 
         private void buttonChange_Click(object sender, EventArgs e)
         {
+            ChangeQuest();
+            RefreshDataGridViewQuest(dataGridViewQuestions);
+        }
 
+        private void RemoveQuest()
+        {
+            DB.openConnection();
+            if (labelQuestId.Text == "")
+            {
+                MessageBox.Show("Сперва нужно выбрать вопрос!");
+            }
+            else
+            {
+                string queryRemove= GetRemoveQueryStringQuest();
+                SqlCommand command = new SqlCommand(queryRemove, DB.GetConnection());
+                command.ExecuteNonQuery();
+                RefreshDataGridViewQuest(dataGridViewQuestions);
+                
+            }
+            DB.closeConnection();
+        }
+
+        private string GetRemoveQueryStringQuest()
+        {
+            string result = $"delete from Quests where QuestId = {labelQuestId.Text};";
+            return result;
         }
 
         private void buttonRemove_Click(object sender, EventArgs e)
         {
-
+            RemoveQuest();
+            RefreshDataGridViewQuest(dataGridViewQuestions);
         }
     }
 }

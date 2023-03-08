@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.richTextBoxQuest1 = new System.Windows.Forms.RichTextBox();
             this.textBoxAns1 = new System.Windows.Forms.TextBox();
             this.textBoxAns2 = new System.Windows.Forms.TextBox();
             this.richTextBoxQuest2 = new System.Windows.Forms.RichTextBox();
             this.textBoxAns3 = new System.Windows.Forms.TextBox();
             this.richTextBoxQuest3 = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelTimer = new System.Windows.Forms.Label();
             this.buttonStartTest = new System.Windows.Forms.Button();
             this.buttonEndTest = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // richTextBoxQuest1
@@ -87,14 +89,14 @@
             this.richTextBoxQuest3.TabIndex = 6;
             this.richTextBoxQuest3.Text = "";
             // 
-            // label1
+            // labelTimer
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(671, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Таймер 20:00";
+            this.labelTimer.AutoSize = true;
+            this.labelTimer.Location = new System.Drawing.Point(671, 15);
+            this.labelTimer.Name = "labelTimer";
+            this.labelTimer.Size = new System.Drawing.Size(76, 13);
+            this.labelTimer.TabIndex = 8;
+            this.labelTimer.Text = "Таймер 20:00";
             // 
             // buttonStartTest
             // 
@@ -116,6 +118,10 @@
             this.buttonEndTest.UseVisualStyleBackColor = true;
             this.buttonEndTest.Click += new System.EventHandler(this.buttonEndTest_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FormTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -123,7 +129,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.buttonEndTest);
             this.Controls.Add(this.buttonStartTest);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelTimer);
             this.Controls.Add(this.textBoxAns3);
             this.Controls.Add(this.richTextBoxQuest3);
             this.Controls.Add(this.textBoxAns2);
@@ -146,8 +152,9 @@
         private System.Windows.Forms.RichTextBox richTextBoxQuest2;
         private System.Windows.Forms.TextBox textBoxAns3;
         private System.Windows.Forms.RichTextBox richTextBoxQuest3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelTimer;
         private System.Windows.Forms.Button buttonStartTest;
         private System.Windows.Forms.Button buttonEndTest;
+        private System.Windows.Forms.Timer timer1;
     }
 }
