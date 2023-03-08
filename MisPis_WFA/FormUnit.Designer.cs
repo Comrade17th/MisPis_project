@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.labelUnitText = new System.Windows.Forms.Label();
             this.buttonTestType1 = new System.Windows.Forms.Button();
             this.buttonTestType2 = new System.Windows.Forms.Button();
             this.buttonTestType3 = new System.Windows.Forms.Button();
             this.chartUnit = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.buttonBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartUnit)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,25 +81,36 @@
             // 
             // chartUnit
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartUnit.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chartUnit.Legends.Add(legend4);
+            chartArea1.Name = "ChartArea1";
+            this.chartUnit.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartUnit.Legends.Add(legend1);
             this.chartUnit.Location = new System.Drawing.Point(383, 100);
             this.chartUnit.Name = "chartUnit";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartUnit.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartUnit.Series.Add(series1);
             this.chartUnit.Size = new System.Drawing.Size(300, 300);
             this.chartUnit.TabIndex = 5;
             this.chartUnit.Text = "chart1";
+            // 
+            // buttonBack
+            // 
+            this.buttonBack.Location = new System.Drawing.Point(13, 415);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(75, 23);
+            this.buttonBack.TabIndex = 6;
+            this.buttonBack.Text = "Назад";
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // FormUnit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.chartUnit);
             this.Controls.Add(this.buttonTestType3);
             this.Controls.Add(this.buttonTestType2);
@@ -120,5 +132,6 @@
         private System.Windows.Forms.Button buttonTestType2;
         private System.Windows.Forms.Button buttonTestType3;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartUnit;
+        private System.Windows.Forms.Button buttonBack;
     }
 }

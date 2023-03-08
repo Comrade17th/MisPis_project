@@ -14,6 +14,7 @@ namespace MisPis_WFA
     {
         string login;
         int unit;
+        ChartLoader chartLoader = new ChartLoader();
         public FormUnit()
         {
             InitializeComponent();
@@ -28,7 +29,12 @@ namespace MisPis_WFA
 
         private void FormUnit_Load(object sender, EventArgs e)
         {
+            LoadChart();
+        }
 
+        private void LoadChart()
+        {
+            chartLoader = new ChartLoader(unit, 1, login, chartUnit);
         }
 
         private void OpenTest(int type)
@@ -51,6 +57,13 @@ namespace MisPis_WFA
         private void buttonTestType3_Click(object sender, EventArgs e)
         {
             OpenTest(3);
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            FormMainMenu mainMenu = new FormMainMenu(login);
+            mainMenu.Show();
+            this.Close();
         }
     }
 }
